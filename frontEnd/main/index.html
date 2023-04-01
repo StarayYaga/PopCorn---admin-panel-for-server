@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Lato:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="buttons">
+            <button class="button theme">THEME</button>
+            <button class="button home">HOME</button>
+
+        </div>
+
+        <div class="title">
+            <h1>ADMIN</h1>
+        </div>
+
+        <div class="buttons">
+            <button class="button reboot">REBOOT</button>
+            <button class="button logout">LOG OUT</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="stats_servises">
+            <div class="stats">
+                <div class="row_1 row">
+                    <div class="itemStat">
+                        <div class="stat CPUstat">
+                            <div class="CPU"></div>
+                        </div>
+                        <div>CPU</div>
+                    </div>
+                    <div class="itemStat">
+                        <div class="stat CPU_TEMPstat">
+                            <div class="CPU_TEMP"></div>
+                        </div>
+                        <div>CPU_TEMP</div>
+                    </div>
+                </div>
+                <div class="row_2 row">
+                    <div class="itemStat">
+                        <div class="stat RAMstat">
+                            <div class="RAM"></div>
+                        </div>
+                        <div>RAM</div>
+                    </div>
+                    <div class="itemStat">
+                        <div class="stat DISKstat">
+                            <div class="DISK_load"></div>
+                            <div class="DISK"></div>
+                        </div>
+                        <div>DISK</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servises">
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="addService">
+        <div class="conteiner">
+            <div class="input ServiceName">
+                <h2>Введите название systemd сервиса</h2>
+                <input class="inputData inputService" type="text">
+            </div>
+            <button class="buttonSendService button" type="submit">ADD</button>
+        </div>
+    </div>
+    <div class="registration">
+        <div class="conteiner">
+            <div class="input Login">
+                <h2>Введите логин</h2>
+                <input class="inputData inputLogin" type="text">
+            </div>
+            <div class="input Password">
+                <h2>Введите пароль</h2>
+                <input class="inputData inputPassword" type="text">
+            </div>
+            <button class="buttonSend button" type="submit">registration</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

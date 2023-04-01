@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: #B2DFDB;
+}
+
+.header {
+    width: 100vw;
+    height: 6vh;
+    background-color: #009688;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.button {
+    /* width: 90px; */
+    margin:0  20px;
+    border-radius: 5px;
+    padding: 5px 5px;
+    text-align: center;
+    border: none;
+    background-color: #00695C;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.main {
+    width: 100vw;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.stats_servises {
+    display: flex;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.stats{
+    background-color: #009688;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.itemStat{
+    font-weight: bold;
+    text-align: center;
+}
+
+.servises {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.stat {
+    width: 100px;
+    aspect-ratio: 1;
+    position: relative;
+    display: inline-grid;
+    place-content: center;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.stat:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    inset: 0;
+    background: conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+            mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+}
+
+.service {
+    text-align: center;
+    margin: 10px 10px;
+    padding: 5px;
+    width: 200px;
+    border-radius: 30px;
+    background-color: #009688;
+}
+
+.status_button{
+    margin: 0 25px;
+
+    display: flex;
+}
+
+.status_service {
+    background-color: #00695C;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 0 40px;
+    align-items: center;
+    text-align: center;
+}
+
+.inputData {
+    margin-bottom: 20px;
+}
+
+.registration, .addService{
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.buttonSend{
+    margin:0  20px;
+    border-radius: 5px;
+    padding: 5px 3px;
+    text-align: center;
+    border: none;
+    background-color: #00695C;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.buttonService {
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    background-color: #FEFEFD;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px;
+    margin: 4px;
+}
+
+.buttonDelete{
+    margin-top: 5px;
+}
+
+@media (max-width: 1000px){
+    .stats_servises {
+        display: block;
+    }
+}
+
+@media (max-width: 600px){
+    .button {
+        margin:0  20px;
+        border-radius: 5px;
+        padding: 5px 5px;
+        text-align: center;
+        border: none;
+        background-color: #00695C;
+        cursor: pointer;
+        font-size: 10px;
+    }
+}
