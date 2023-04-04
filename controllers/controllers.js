@@ -1,14 +1,16 @@
 const os = require('os')
 const si = require('systeminformation');
+var osu = require('node-os-utils')
 const checkDiskSpace = require('check-disk-space').default
 // const { exec } = require("child_process");
 
 
 module.exports = new class {
     async getInfo(){
+        var cpu = osu.cpu
         const uptime = si.time().uptime /60/60
         const cpuTemp = await si.cpuTemperature()
-        const cpuLoad = await si.cpuCurrentSpeed()
+        const cpuLoad = await cpu.usage()
         const memTotal = await si.mem()
         const memUsed = await si.mem()
         // const memLoad = memUsed/memTotal
@@ -17,7 +19,7 @@ module.exports = new class {
         return await ({
             "uptime": uptime,
             "cpuTemp": cpuTemp.main,
-            "cpuLoad": cpuLoad.avg,
+            "cpuLoad": cpuLoad,
             "memTotal": memTotal.total/1024/1024/1024,
             "memUsed": memUsed.used/1024/1024/1024,
             // "memLoad": memLoad,
