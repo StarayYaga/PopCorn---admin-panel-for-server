@@ -6,14 +6,13 @@ const checkDiskSpace = require('check-disk-space').default
 
 
 module.exports = new class {
-    async getInfo(){
+    async getInfo(){ //return info about sistem
         var cpu = osu.cpu
         const uptime = si.time().uptime /60/60
         const cpuTemp = await si.cpuTemperature()
         const cpuLoad = await cpu.usage()
         const memTotal = await si.mem()
         const memUsed = await si.mem()
-        // const memLoad = memUsed/memTotal
         const diskSize = await si.diskLayout()
         const diskFree = await checkDiskSpace("/")
         return await ({
@@ -22,12 +21,11 @@ module.exports = new class {
             "cpuLoad": cpuLoad,
             "memTotal": memTotal.total/1024/1024/1024,
             "memUsed": memUsed.used/1024/1024/1024,
-            // "memLoad": memLoad,
             "diskSize": diskSize[0].size/1024/1024/1024,
             "diskFree": diskFree.free/1024/1024/1024,
         })
     }
-    async setInfo(obj){
+    async setInfo(obj){ //return info about systemd service
         const data = await si.services(obj)
         return await data[0].running
     }
