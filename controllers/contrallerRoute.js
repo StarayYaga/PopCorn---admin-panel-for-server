@@ -23,7 +23,6 @@ class controlRouter {
     			return res.json(userData)
             }
         } catch (e){
-            // console.log(e);
         }
     }
 
@@ -31,10 +30,10 @@ class controlRouter {
         try{
             const email = req.body
             await userService.logout(email)
-            res.statusCode(200)
+            res.sendStatus(200)
         } catch (e){
             console.log(e);
-            res.statusCode(400)
+            res.sendStatus(200)
         }
     }
 

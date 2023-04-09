@@ -47,6 +47,10 @@ const colors = [
     
 let stateTheme = 0
 const buttonTheme = document.querySelector('.theme')
+const theme = localStorage.getItem('theme')
+if (theme != 0){
+    setTheme(theme)
+}
     
 function setTheme (){
     stateTheme+=1
@@ -78,6 +82,8 @@ function setTheme (){
     if (stateTheme){
         stateTheme -=2
     }
+    localStorage.theme = stateTheme
+
 }
     
 buttonTheme.addEventListener('click', setTheme)

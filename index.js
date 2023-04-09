@@ -10,8 +10,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(router)
 
 
-
-// app.use("/", express.static('frontEnd/main'))
 app.use('/api',function(req, res){
 	console.log(req.body)
 	res.send(req.body)

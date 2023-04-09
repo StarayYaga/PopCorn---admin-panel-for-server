@@ -1,6 +1,16 @@
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+const cpu = document.querySelector('.CPU')
+const cpuStat = document.querySelector('.CPUstat')
+
+const cpu_temp = document.querySelector('.CPU_TEMP')
+const cpu_tempStat = document.querySelector('.CPU_TEMPstat')
+
+const ram = document.querySelector('.RAM')
+const ramStat = document.querySelector('.RAMstat')
+
+const DISK_load = document.querySelector('.DISK_load')
+const DISK = document.querySelector('.DISK')
+const DISKstat = document.querySelector('.DISKstat')
+
 const check = async ()=>{
     const refreshToken = localStorage.getItem('refreshToken')
     const email = localStorage.getItem('email')
@@ -33,11 +43,11 @@ const check = async ()=>{
 
 check()
 
-document.querySelector('.logout').addEventListener('click',async ()=>{
+document.querySelector('.logout').addEventListener('click', ()=>{
     const data = {
         "email": localStorage.getItem('email')
     }
-    await fetch('/api/check',
+    fetch('/api/check',
         {
         method: 'POST',
         headers: {
@@ -73,20 +83,6 @@ async function getData (){
 
 async function UpdateStats(){
     const data = await getData()
-
-    const cpu = document.querySelector('.CPU')
-    const cpuStat = document.querySelector('.CPUstat')
-
-    const cpu_temp = document.querySelector('.CPU_TEMP')
-    const cpu_tempStat = document.querySelector('.CPU_TEMPstat')
-
-    const ram = document.querySelector('.RAM')
-    const ramStat = document.querySelector('.RAMstat')
-
-    const DISK_load = document.querySelector('.DISK_load')
-    const DISK = document.querySelector('.DISK')
-    const DISKstat = document.querySelector('.DISKstat')
-
     cpuStat.style.cssText = 
         `--p:${data.cpu_load};--b:10px;--c:${getColor(data.cpu_load)};`
     cpu.textContent = data.cpu_load+" %"
@@ -98,7 +94,6 @@ async function UpdateStats(){
     DISKstat.style.cssText = `--p:${data.hdd_load};--b:10px;--c:${getColor(data.hdd_load)};`
     DISK_load.textContent = data.hddLoad + ' GB'
     DISK.textContent = data.hdd_load+" %"
-    await sleep(1000)
 }
 
 async function UpdateService (){
@@ -134,19 +129,17 @@ async function render(){
         setTheme(theme)
     }
 
-    while (true){
-        await UpdateStats()
-    }   
+    setInterval(UpdateStats, 500)  
 }
 
-async function login (){
+async function registration (){
 	let password = document.querySelector('.inputPassword').value
 	let email = document.querySelector('.inputLogin').value
 	const data = {
 					"email": email,
 					"password": password
 				}
-	let response = await fetch('../api/registration',
+	fetch('../api/registration',
 		{
 			method: 'POST',
             headers: {
@@ -189,7 +182,7 @@ async function deleteService(name){
 }
 
 
-document.querySelector('.buttonSend').addEventListener('click', login)
+document.querySelector('.buttonSend').addEventListener('click', registration)
 document.querySelector('.buttonSendService').addEventListener('click', addService)
 
 
