@@ -1,6 +1,7 @@
 const config = require('../config/config').db_pathi
 // const { deleteService } = require('./dbFuncs');
 const userService = require('./userControl')
+const exec = require('child_process').exec
 
 
 class controlRouter {
@@ -74,6 +75,16 @@ class controlRouter {
     async getServices(req, res,next){
         const data = await userService.getServices()
         return res.json(data)
+    }
+    async reboot(req, res){
+        console.log("reboot");
+        const {email, refresh} = req.body
+        const userData = await userService.check(email, refresh)
+        console.log(userData);
+        if (userData){
+            res.sendStatus(200)
+            await exec("reboot")
+        }
     }
 }
 

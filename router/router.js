@@ -19,6 +19,7 @@ router.post("/api/serviceControl", controllerRouter.setData) // return json stat
 router.post("/api/pushService", controllerRouter.pushService)  // return status code 200
 router.post("/api/deleteService", controllerRouter.deleteService) // return status code 200
 router.get("/api/getService", controllerRouter.getServices)// return status code 200
+router.post("/api/reboot", controllerRouter.reboot)
 
 
 module.exports = router

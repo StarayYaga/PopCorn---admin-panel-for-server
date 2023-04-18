@@ -263,3 +263,31 @@ function getColorStatus (status){
     }
     return '#FFE601'
 }
+
+document.querySelector('.reboot').addEventListener('click', async()=>{
+    console.log("reboot");
+    const refreshToken = localStorage.getItem('refreshToken')
+    const email = localStorage.getItem('email')
+    const dataTime = localStorage.getItem('data')
+    if (Date.now() > dataTime){
+        window.location.href = "../login"
+    }
+
+    const data = {
+        "email": email,
+        "refresh": refreshToken
+    }
+    const response = await fetch('/api/reboot',
+        {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(data)
+        }
+    )
+    const jsn = await response.json
+    if (!jsn){
+        window.location.href = "../login"
+    }
+})
