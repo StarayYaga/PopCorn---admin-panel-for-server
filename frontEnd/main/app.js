@@ -115,6 +115,7 @@ async function UpdateService (){
 }
 
 async function render(){
+    setInterval(UpdateStats, 500)  
     await UpdateService()
 
     document.querySelectorAll(".buttonDelete").forEach(item =>{
@@ -124,12 +125,11 @@ async function render(){
         })
     })
 
-    const theme = localStorage.getItem('theme')
-    if (theme != 0){
-        setTheme(theme)
-    }
+    // const theme = localStorage.getItem('theme')
+    // if (theme != 0){
+    //     setTheme(theme)
+    // }
 
-    setInterval(UpdateStats, 500)  
 }
 
 async function registration (){
@@ -208,42 +208,42 @@ let len = colors.length
 const buttonTheme = document.querySelector('.theme')
 
 function setTheme (){
-    stateTheme+=1
-    const elements = [
-        {'stat': document.querySelector('.header'), 'color': 'color2', "isArr": false},
-        {'stat': document.querySelectorAll('.button'), 'color': 'color3', "isArr": true},
-        {'stat': document.querySelector('body'), 'color': 'color1', "isArr": false},
-        {'stat': document.querySelector('.stats'), 'color': 'color2', "isArr": false},
-        {'stat': document.querySelectorAll('.service'), 'color': 'color2', "isArr": true},
-        {'stat': document.querySelectorAll('.status_service'), 'color': 'color3', "isArr": true}
-    ]
+    // stateTheme+=1
+    // const elements = [
+    //     {'stat': document.querySelector('.header'), 'color': 'color2', "isArr": false},
+    //     {'stat': document.querySelectorAll('.button'), 'color': 'color3', "isArr": true},
+    //     {'stat': document.querySelector('body'), 'color': 'color1', "isArr": false},
+    //     {'stat': document.querySelector('.stats'), 'color': 'color2', "isArr": false},
+    //     {'stat': document.querySelectorAll('.service'), 'color': 'color2', "isArr": true},
+    //     {'stat': document.querySelectorAll('.status_service'), 'color': 'color3', "isArr": true}
+    // ]
 
-    for (element of elements){
-        if (element.isArr === false){
-            colors[stateTheme].forEach((color, index) =>{
-                if (element.color === color.color){
-                    element.stat.style = `background-color: ${colors[stateTheme][index][color.color]};`
-                }
-            })
-        } else {
-            element.stat.forEach(item => {
-                colors[stateTheme].forEach((color, index) =>{
-                    if (element.color === color.color){
-                        item.style = `background-color: ${colors[stateTheme][index][color.color]};`
-                    }
-                })
-            })
+    // for (element of elements){
+    //     if (element.isArr === false){
+    //         colors[stateTheme].forEach((color, index) =>{
+    //             if (element.color === color.color){
+    //                 element.stat.style = `background-color: ${colors[stateTheme][index][color.color]};`
+    //             }
+    //         })
+    //     } else {
+    //         element.stat.forEach(item => {
+    //             colors[stateTheme].forEach((color, index) =>{
+    //                 if (element.color === color.color){
+    //                     item.style = `background-color: ${colors[stateTheme][index][color.color]};`
+    //                 }
+    //             })
+    //         })
             
-        }
-    }
+    //     }
+    // }
 
-    if (stateTheme){
-        stateTheme -=2
-    }
-    localStorage.theme = stateTheme
+    // if (stateTheme){
+    //     stateTheme -=2
+    // }
+    // localStorage.theme = stateTheme
 }
 
-buttonTheme.addEventListener('click', setTheme)
+// buttonTheme.addEventListener('click', setTheme)
 
 
 function getColor(num){

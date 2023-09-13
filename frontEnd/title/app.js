@@ -16,45 +16,45 @@ const colors = [
 ]
 
 
-let stateTheme = 0
-const buttonTheme = document.querySelector('.theme')
-const theme = localStorage.getItem('theme')
-if (theme != 0){
-    setTheme(theme)
-}
+// let stateTheme = 0
+// const buttonTheme = document.querySelector('.theme')
+// const theme = localStorage.getItem('theme')
+// if (theme != 0){
+//     setTheme(theme)
+// }
 
-function setTheme (){
-    stateTheme+=1
-    const elements = [
-        {'stat': document.querySelector('.header'), 'color': 'color2', "isArr": false},
-        {'stat': document.querySelectorAll('.button'), 'color': 'color3', "isArr": true},
-        {'stat': document.querySelector('.main'), 'color': 'color1', "isArr": false}
-    ]
+// function setTheme (){
+//     stateTheme+=1
+//     const elements = [
+//         {'stat': document.querySelector('.header'), 'color': 'color2', "isArr": false},
+//         {'stat': document.querySelectorAll('.button'), 'color': 'color3', "isArr": true},
+//         {'stat': document.querySelector('.main'), 'color': 'color1', "isArr": false}
+//     ]
 
-    for (element of elements){
-        if (element.isArr === false){
-            colors[stateTheme].forEach((color, index) =>{
-                if (element.color === color.color){
-                    element.stat.style = `background-color: ${colors[stateTheme][index][color.color]};`
-                }
-            })
-        } else {
-            element.stat.forEach(item => {
-                colors[stateTheme].forEach((color, index) =>{
-                    if (element.color === color.color){
-                        item.style = `background-color: ${colors[stateTheme][index][color.color]};`
-                    }
-                })
-            })
+//     for (element of elements){
+//         if (element.isArr === false){
+//             colors[stateTheme].forEach((color, index) =>{
+//                 if (element.color === color.color){
+//                     element.stat.style = `background-color: ${colors[stateTheme][index][color.color]};`
+//                 }
+//             })
+//         } else {
+//             element.stat.forEach(item => {
+//                 colors[stateTheme].forEach((color, index) =>{
+//                     if (element.color === color.color){
+//                         item.style = `background-color: ${colors[stateTheme][index][color.color]};`
+//                     }
+//                 })
+//             })
             
-        }
-    }
+//         }
+//     }
 
-    if (stateTheme){
-        stateTheme -=2
-    }
-    localStorage.theme = stateTheme
+//     if (stateTheme){
+//         stateTheme -=2
+//     }
+//     localStorage.theme = stateTheme
 
-}
+// }
 
-buttonTheme.addEventListener('click', setTheme)
+// buttonTheme.addEventListener('click', setTheme)
